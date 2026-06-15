@@ -1,0 +1,18 @@
+<style>
+    .card {
+        margin : 10px;
+        padding: 10px;
+
+        border : solid black 2px;
+        border-radius: 10px;
+    }
+</style>
+
+{% for user in users %}
+<div class="card">
+    <h2>{{user.prenom}} {{user.nom}}</h2>
+    <p><strong>Identifiant Kwartz : </strong>{{user.kwartz}}</p>
+    <p><strong>adresse mail : </strong>{{user.mail}}</p>
+    <p><strong>mot de passe mail : </strong>{{user.mdp}}</p>
+</div>
+{% endfor %}
