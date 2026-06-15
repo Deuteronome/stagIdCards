@@ -1,18 +1,122 @@
 <style>
+    @page {
+        margin: 1cm;
+    }
+
+    @font-face {
+        font-family: 'caviar';
+        src:url('{{font}}')
+    }
+
+    @font-face {
+        font-family: 'caviar_bold';
+        src:url('{{bfont}}')
+    }
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        width: 100%;
+        font-size: 0;
+
+    }
+
+    .card-box {
+        display: inline-block;
+        width: 48%;
+        margin: 1%;
+        vertical-align: top;
+
+        page-break-inside: avoid;
+        break-inside: avoid;
+
+        font-size: initial;
+    }
+
     .card {
-        margin : 10px;
-        padding: 10px;
+        display:flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+
+        margin-bottom: 10px;
 
         border : solid black 2px;
         border-radius: 10px;
+
+        page-break-inside: avoid;
+        break-inside: avoid;
+
+        font-family: 'caviar', sans-serif;
+    }
+
+    .card-header {
+        background-color: black;
+        font-family: 'caviar_bold', sans-serif;
+        color: white;
+        padding : 10px;
+        border-radius: 5px 5px 0 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card-main {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+
+    strong {
+        font-family: 'caviar_bold', sans-serif;
+    }
+
+    .info-line {
+        margin-bottom: 5px;
+    }
+
+    .card-footer {
+        height: 50px;
+        margin-bottom: 5px;
+    }
+
+    .card-footer img {
+        max-height: 50px;
+        display: block;
+        margin: auto;
     }
 </style>
-
+<div class="container">
 {% for user in users %}
-<div class="card">
-    <h2>{{user.prenom}} {{user.nom}}</h2>
-    <p><strong>Identifiant Kwartz : </strong>{{user.kwartz}}</p>
-    <p><strong>adresse mail : </strong>{{user.mail}}</p>
-    <p><strong>mot de passe mail : </strong>{{user.mdp}}</p>
-</div>
+    <div class="card-box">
+        <div class="card">
+            <div class="card-header">
+                <h2>{{user.prenom}} {{user.nom}}</h2>
+            </div>
+            <div class="card-main">
+                <div class="info-line">
+                    <p><strong>Identifiant Kwartz : </strong></p>
+                    <p>{{user.kwartz}}</p>
+                </div>
+                <div class="info-line">
+                    <p><strong>Adresse mail : </strong></p>
+                    <p>{{user.mail}}</p>
+                </div>
+                <div class="info-line">
+                    <p><strong>Mot de passe mail : </strong></p>
+                    <p>{{user.mdp}}</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <img src="{{image}}" alt="logo">
+            </div>
+        </div>
+    </div>
 {% endfor %}
+</div>
